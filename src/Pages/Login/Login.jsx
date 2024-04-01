@@ -39,8 +39,8 @@ const Login = () => {
                             placeholder="Enter your password"
                         />
                     </div>
-                    <Button className="mt-5 w-full" onClick={handleLogin}> Sign In</Button>
-                    <h1 className='text-center text-xs mt-10'>Don’t have an account ? <Link className='text-[#6558F5]' to="/register">Sign Up</Link> </h1>
+                    <Button className="mt-5 w-full" onClick={handleLogin}> Log In</Button>
+                    <h1 className='text-center text-xs mt-10'>Don’t have an account ? <Link className='text-blue-800' to="/register">Register</Link> </h1>
                 </div>
                 
             </div>
