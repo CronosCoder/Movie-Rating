@@ -11,6 +11,7 @@ import Register from './Pages/Register/Register';
 import AllMovie from './Pages/Home/All Movies/AllMovie';
 import AddMovie from './Pages/Home/Add Movie/AddMovie';
 import LogOut from './Pages/Home/Logout/LogOut';
+import MovieDetails from './Pages/Home/Movie Details/MovieDetails';
 
 const router = createBrowserRouter([
   {
@@ -20,6 +21,10 @@ const router = createBrowserRouter([
       {
         path: "",
         element: <AllMovie/>
+      },
+      {
+        path: "/movie/:id",
+        element: <MovieDetails/>
       },
       {
         path: "/add-movie",
