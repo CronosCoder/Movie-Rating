@@ -42,7 +42,6 @@ const Login = () => {
                     <Button className="mt-5 w-full" onClick={handleLogin}> Log In</Button>
                     <h1 className='text-center text-xs mt-10'>Don’t have an account ? <Link className='text-blue-800' to="/register">Register</Link> </h1>
                 </div>
-                
             </div>
         </div>
     );
