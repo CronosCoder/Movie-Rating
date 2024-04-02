@@ -9,7 +9,7 @@ import { Link } from "react-router-dom";
 
 const MovieCard = () => {
     return (
-        <div className="bg-slate-300 rounded-lg border border-white bg-opacity-80 py-3 px-4">
+        <div className="bg-slate-300 rounded-lg border border-white bg-opacity-80 hover:bg-opacity-70 duration-300 py-3 px-4">
             <h1 className="text-xl font-semibold capitalize">Avengers: Endgame</h1>
             <div className="flex justify-between items-center my-3">
                 <h1 className="text-sm">Genre: Action</h1>

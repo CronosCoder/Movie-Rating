@@ -13,10 +13,10 @@ const AddMovie = () => {
         console.log(name,genre,rating,release);
     }
     return (
-        <div className="bg-white bg-opacity-50 rounded-lg border p-5 w-2/3 mx-auto mt-10">
+        <div className="bg-white bg-opacity-50 rounded-lg border py-8 w-2/3 mx-auto mt-10">
             <h1 className="text-2xl font-bold text-center">Add a New Movie</h1>
             <p className="text-center text-xm">Please enter movie credentials here.</p>
-            <div className='mt-8 w-2/3 mx-auto'>
+            <div className='mt-5 w-2/3 mx-auto'>
                 <Label htmlFor="name">Movie Name</Label>
                 <Input
                     className="bg-transparent text-black"
