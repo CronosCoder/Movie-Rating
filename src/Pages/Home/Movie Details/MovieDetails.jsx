@@ -30,7 +30,7 @@ const MovieDetails = () => {
             <h2 className="font-semibold text-gray-300 text-3xl mt-5">Genre: {movie.genre}</h2>
             <h2 className="font-semibold text-gray-300 text-3xl mt-5">Rating: {movie.rating}</h2>
             <h2 className="font-semibold text-gray-300 text-3xl mt-5">AVG Rating: <span className="font-bold text-yellow-400">{movie.avg_rating}</span> ({movie.total_rating})</h2>
-            <h2 className="font-semibold text-gray-300 text-3xl mt-5">Release Date: 10-03-2023</h2>
+            <h2 className="font-semibold text-gray-300 text-3xl mt-5">Release Date: {movie.release_date}</h2>
         </div>
     );
 };
