@@ -1,18 +1,46 @@
+import { registerUrl } from '@/Utilities/Url';
 import LoginImg from '../../assets/create.jpg';
 import { Button } from '@/components/ui/button';
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import Swal from 'sweetalert2'
 
 const Register = () => {
     const [name, setName] = useState('');
     const [phone, setPhone] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const navigate = useNavigate();
 
     const handleRegister = () =>{
-        console.log(name,phone,email,password);
+        const registerData = {name,phone,email,password};
+        if (password.length < 5) {
+            Swal.fire("Password must be greater or equal to 5 characters.", "", "warning");
+        } else {
+            fetch(registerUrl, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(registerData),
+            })
+                .then(res => {
+                    if (res.status === 400) {
+                        Swal.fire({
+                            title: 'Error!',
+                            text: 'Email Already Exists..! Please Login.',
+                            icon: 'error',
+                        })
+                    } else {
+                        res.status == 201 && Swal.fire("Successfully Created !", "", "success");
+                        return res.json();
+                    }
+                })
+                .then(data => navigate('/login'))
+                .catch(error => Swal.fire("Account does not created!", "", "error"))
+        }
     }
     return (
         <div className='h-screen bg-cover backdrop-blur-lg relative' style={{backgroundImage:`url(${LoginImg})`}}>

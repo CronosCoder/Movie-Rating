@@ -1,16 +1,59 @@
+import { getAuth } from '@/Context/getContext';
 import LoginImg from '../../assets/create.jpg';
 import { Button } from '@/components/ui/button';
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { loginUrl, userUrl } from '@/Utilities/Url';
+import Swal from 'sweetalert2'
 
 const Login = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const navigate = useNavigate();
+    const location = useLocation();
+    const {setUser,setLoading} = getAuth();
+
+    const from = location.state?.from?.pathname || '/';
 
     const handleLogin = () =>{
-        console.log(email,password);
+        const loginData = { email, password };
+        fetch(loginUrl, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(loginData),
+        }).then(res => {
+            if (res.status == 401) {
+                Swal.fire({
+                    title: 'Error!',
+                    text: 'Please Login with correct credentials',
+                    icon: 'error',
+                });
+            }
+            return res.json();
+        }).then(data => {
+            localStorage.setItem('accessToken', data.access);
+            fetch(userUrl, {
+                method: 'GET',
+                headers: {
+                    'Authorization': `JWT ${data.access}`,
+                    'Content-Type': 'application/json',
+                },
+            })
+                .then(res => {
+                    res.status == 200 && Swal.fire("Successfully Logged in !", "", "success");
+                    return res.json();
+                })
+                .then(data => {
+                    setUser(data);
+                    setLoading(false);
+                    navigate(from);
+                })
+
+        })
     }
 
     return (
