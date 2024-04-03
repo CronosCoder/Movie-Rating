@@ -1,4 +1,4 @@
-const domain = "http://localhost:8000";
+const domain = "https://movierating.pythonanywhere.com";
 
 export const userUrl = `${domain}/auth/users/me`;
 export const loginUrl = `${domain}/auth/jwt/create`;
