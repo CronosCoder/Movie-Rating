@@ -18,7 +18,7 @@ const MovieCard = ({movie}) => {
     const navigate = useNavigate();
 
     const handleRating = () =>{
-        if(rating>0 && rating < 6){
+        if(rating>-1 && rating < 6){
             const formData = {
                 user_id:user.id,
                 movie_id:movie.id,
@@ -41,7 +41,7 @@ const MovieCard = ({movie}) => {
             })
 
         }else{
-            Swal.fire("Rating must be 1 to 5","",'error');
+            Swal.fire("Rating must 0 to 5","",'error');
         }
     }
 
